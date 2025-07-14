@@ -7,19 +7,19 @@
     "branch": "7.3",
     "previousVersions": [
       {
-        "branch": "7.3",
+        "tag": "7.3",
         "title": "v7.3"
       },
       {
-        "branch": "7.2",
+        "tag": "7.2",
         "title": "v7.2"
       },
       {
-        "branch": "7.0",
+        "tag": "7.0",
         "title": "v7.0"
       },
       {
-        "branch": "6.4",
+        "tag": "6.4",
         "title": "v6.4"
       }
     ]
