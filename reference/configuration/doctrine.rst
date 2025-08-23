@@ -353,7 +353,7 @@ to cache each of Doctrine ORM elements (queries, results, etc.):
                     ->pool('doctrine.result_cache_pool')
                         ->adapters('cache.app')
                     ->pool('doctrine.system_cache_pool')
-                        ->adapters('cache.sytsem');
+                        ->adapters('cache.system');
 
             $doctrine->orm()
                 // ...

@@ -301,6 +301,33 @@ You can update your third-party packages to their current versions by running:
     $ php bin/console importmap:update bootstrap lodash
     $ php bin/console importmap:outdated bootstrap lodash
 
+Removing JavaScript Packages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you need to remove a JavaScript package that was previously added to your
+``importmap.php`` file, use the ``importmap:remove`` command. For example, to
+remove the ``lodash`` package:
+
+.. code-block:: terminal
+
+    $ php bin/console importmap:remove lodash
+
+This updates your ``importmap.php`` file and removes the specified package
+(along with any dependencies that were added with it).
+
+After running this command, it's recommended to also run the following to ensure
+that your ``assets/vendor/`` directory is in sync with the updated import map:
+
+.. code-block:: terminal
+
+    $ php bin/console importmap:install
+
+.. tip::
+
+    Removing a package from the import map does not automatically remove any
+    references to it in your JavaScript files. Make sure to update your code and
+    remove any ``import`` statements that reference the removed package.
+
 How does the importmap Work?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

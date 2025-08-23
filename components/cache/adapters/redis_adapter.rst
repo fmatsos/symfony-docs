@@ -9,7 +9,7 @@ Redis Cache Adapter
     article if you are using it in a Symfony application.
 
 This adapter stores the values in-memory using one (or more) `Redis server`_
-of `Valkey`_ server instances.
+or `Valkey`_ server instances.
 
 Unlike the :doc:`APCu adapter </components/cache/adapters/apcu_adapter>`, and similarly to the
 :doc:`Memcached adapter </components/cache/adapters/memcached_adapter>`, it is not limited to the current server's

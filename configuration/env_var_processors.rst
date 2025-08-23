@@ -951,3 +951,9 @@ To enable the new processor in the app, register it as a service and
 tag. If you're using the
 :ref:`default services.yaml configuration <service-container-services-load-example>`,
 this is already done for you, thanks to :ref:`autoconfiguration <services-autoconfigure>`.
+
+Resolving Environment Variable At Compile Time
+----------------------------------------------
+
+Environment variables are resolved at runtime, but you can also resolve them
+:ref:`at compile time <resolving-env-vars-at-compile-time>`.

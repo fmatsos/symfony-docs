@@ -673,6 +673,15 @@ of the opened file, but you can configure both with the PHP streaming configurat
         $formData->getParts(); // Returns two instances of TextPart both
                                // with the name "array_field"
 
+The ``Content-Type`` of each form's part is detected automatically. However,
+you can override it by passing a ``DataPart``::
+
+    use Symfony\Component\Mime\Part\DataPart;
+
+    $formData = new FormDataPart([
+        ['json_data' => new DataPart(json_encode($json), null, 'application/json')]
+    ]);
+
 By default, HttpClient streams the body contents when uploading them. This might
 not work with all servers, resulting in HTTP status code 411 ("Length Required")
 because there is no ``Content-Length`` header. The solution is to turn the body

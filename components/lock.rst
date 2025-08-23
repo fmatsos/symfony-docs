@@ -404,8 +404,9 @@ Store                                                       Scope   Blocking  Ex
 .. tip::
 
     Symfony includes two other special stores that are mostly useful for testing:
-    ``InMemoryStore``, which saves locks in memory during a process, and ``NullStore``,
-    which doesn't persist anything.
+
+    * ``InMemoryStore`` (``LOCK_DSN=in-memory``), which saves locks in memory during a process;
+    * ``NullStore`` (``LOCK_DSN=null``) which doesn't persist anything.
 
 .. versionadded:: 7.2
 

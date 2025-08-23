@@ -171,7 +171,7 @@ This also works with class constants::
     }
 
     var_dump($expressionLanguage->evaluate(
-        'constant("App\\\SomeNamespace\\\Foo::API_ENDPOINT")'
+        'constant("App\\\\SomeNamespace\\\\Foo::API_ENDPOINT")'
     ));
 
 This will print out ``/api``.
@@ -189,7 +189,7 @@ This function will return the case of an enumeration::
     }
 
     var_dump(App\Enum\Foo::Bar === $expressionLanguage->evaluate(
-        'enum("App\\\SomeNamespace\\\Foo::Bar")'
+        'enum("App\\\\SomeNamespace\\\\Foo::Bar")'
     ));
 
 This will print out ``true``.

@@ -629,6 +629,35 @@ all the properties of the class::
         // ...
     }
 
+Serializing JSON Using Streams
+------------------------------
+
+Symfony can encode PHP data structures to JSON streams and decode JSON streams
+back into PHP data structures.
+
+To do this, it relies on the :doc:`JsonStreamer component </serializer/streaming_json>`,
+which is designed for high efficiency and can process large JSON data incrementally,
+without needing to load the entire content into memory.
+
+When deciding between the Serializer component and the JsonStreamer component,
+consider the following:
+
+* **Serializer Component**: Best suited for use cases that require flexibility,
+  such as dynamically manipulating object structures using normalizers and
+  denormalizers, or handling complex objects with multiple serialization
+  formats. It also supports output formats beyond JSON (including your own
+  custom ones).
+* **JsonStreamer Component**: Best suited for simple objects and scenarios that
+  demand high performance and low memory usage. It's particularly effective
+  for processing very large JSON datasets or when streaming JSON in real-time
+  without loading the entire dataset into memory.
+
+The choice depends on your specific use case. The JsonStreamer component is
+tailored for performance and memory efficiency, whereas the Serializer
+component provides greater flexibility and broader format support.
+
+Read more about :doc:`streaming JSON </serializer/streaming_json>`.
+
 Serializing to or from PHP Arrays
 ---------------------------------
 

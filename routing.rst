@@ -279,10 +279,10 @@ given value:
     .. code-block:: yaml
 
         # config/routes.yaml
-        tools:
-            path:       /tools
-            controller: App\Controller\DefaultController::developerTools
-            env:        dev
+        when@dev:
+            tools:
+                path: /tools
+                controller: App\Controller\DefaultController::developerTools
 
     .. code-block:: xml
 
@@ -293,9 +293,9 @@ given value:
             xsi:schemaLocation="http://symfony.com/schema/routing
                 https://symfony.com/schema/routing/routing-1.0.xsd">
 
-            <route id="tools" path="/tools" controller="App\Controller\DefaultController::developerTools">
-                <env>dev</env>
-            </route>
+            <when env="dev">
+                <route id="tools" path="/tools" controller="App\Controller\DefaultController::developerTools"/>
+            </when>
         </routes>
 
     .. code-block:: php
@@ -305,10 +305,11 @@ given value:
         use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
 
         return function (RoutingConfigurator $routes): void {
-            $routes->add('tools', '/tools')
-                ->controller([DefaultController::class, 'developerTools'])
-                ->env('dev')
-            ;
+            if('dev' === $routes->env()) {
+                $routes->add('tools', '/tools')
+                    ->controller([DefaultController::class, 'developerTools'])
+                ;
+            }
         };
 
 .. _routing-matching-expressions:
@@ -916,6 +917,10 @@ other configuration formats they are defined with the ``defaults`` option:
 
 Now, when the user visits ``/blog``, the ``blog_list`` route will match and
 ``$page`` will default to a value of ``1``.
+
+.. tip::
+
+    The default value is allowed to not match the requirement.
 
 .. warning::
 
@@ -1555,6 +1560,7 @@ This way, the ``product_show`` alias could be deprecated.
         namespace App\Controller;
 
         use Symfony\Component\HttpFoundation\Response;
+        use Symfony\Component\Routing\Attribute\DeprecatedAlias;
         use Symfony\Component\Routing\Attribute\Route;
 
         class ProductController
@@ -1655,6 +1661,10 @@ This way, the ``product_show`` alias could be deprecated.
                 'The "%alias_id%" route alias is deprecated. Please use "product_details" instead.'
             )
         ;
+
+.. versionadded:: 7.3
+
+    The ``DeprecatedAlias`` class for PHP attributes was introduced in Symfony 7.3.
 
 In this example, every time the ``product_show`` alias is used, a deprecation
 warning is triggered, advising you to stop using this route and prefer using ``product_details``.

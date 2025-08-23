@@ -386,6 +386,127 @@ type-hints by running:
 
       [...]
 
+In addition to injecting services, you can also pass scalar values and collections
+as arguments of other services:
+
+.. configuration-block::
+
+    .. code-block:: yaml
+
+        # config/services.yaml
+        services:
+            App\Service\SomeService:
+                arguments:
+                    # string, numeric and boolean arguments can be passed "as is"
+                    - 'Foo'
+                    - true
+                    - 7
+                    - 3.14
+
+                    # constants can be built-in, user-defined, or Enums
+                    - !php/const E_ALL
+                    - !php/const PDO::FETCH_NUM
+                    - !php/const Symfony\Component\HttpKernel\Kernel::VERSION
+                    - !php/const App\Config\SomeEnum::SomeCase
+
+                    # when not using autowiring, you can pass service arguments explicitly
+                    - '@some-service-id'  # the leading '@' tells this is a service ID, not a string
+                    - '@?some-service-id' # using '?' means to pass null if service doesn't exist
+
+                    # binary contents are passed encoded as base64 strings
+                    - !!binary VGhpcyBpcyBhIEJlbGwgY2hhciAH
+
+                    # collections (arrays) can include any type of argument
+                    -
+                        first: !php/const true
+                        second: 'Foo'
+
+    .. code-block:: xml
+
+        <!-- config/services.xml -->
+        <?xml version="1.0" encoding="UTF-8" ?>
+        <container xmlns="http://symfony.com/schema/dic/services"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:framework="http://symfony.com/schema/dic/symfony"
+            xsi:schemaLocation="http://symfony.com/schema/dic/services
+                https://symfony.com/schema/dic/services/services-1.0.xsd
+                http://symfony.com/schema/dic/symfony
+                https://symfony.com/schema/dic/symfony/symfony-1.0.xsd">
+
+            <services>
+                <service id="App\Service\SomeService">
+                    <!-- arguments without a type can be strings or numbers -->
+                    <argument>Foo</argument>
+                    <argument>7</argument>
+                    <argument>3.14</argument>
+                    <!-- explicitly declare a string argument -->
+                    <argument type="string">Foo</argument>
+                    <!-- booleans are passed as constants -->
+                    <argument type="constant">true</argument>
+
+                    <!-- constants can be built-in, user-defined, or Enums -->
+                    <argument type="constant">E_ALL</argument>
+                    <argument type="constant">PDO::FETCH_NUM</argument>
+                    <argument type="constant">Symfony\Component\HttpKernel\Kernel::VERSION</argument>
+                    <argument type="constant">App\Config\SomeEnum::SomeCase</argument>
+
+                    <!-- when not using autowiring, you can pass service arguments explicitly -->
+                    <argument type="service"
+                              id="some-service-id"
+                              on-invalid="dependency_injection-ignore"/>
+
+                    <!-- binary contents are passed encoded as base64 strings -->
+                    <argument type="binary">VGhpcyBpcyBhIEJlbGwgY2hhciAH</argument>
+
+                    <!-- collections (arrays) can include any type of argument -->
+                    <argument type="collection">
+                        <argument key="first" type="constant">true</argument>
+                        <argument key="second" type="string">Foo</argument>
+                    </argument>
+                </service>
+
+                <!-- ... -->
+            </services>
+        </container>
+
+    .. code-block:: php
+
+        // config/services.php
+        namespace Symfony\Component\DependencyInjection\Loader\Configurator;
+
+        use Symfony\Component\DependencyInjection\ContainerInterface;
+        use Symfony\Component\DependencyInjection\Reference;
+
+        return static function (ContainerConfigurator $container) {
+            $services = $container->services();
+
+            $services->set(App\Service\SomeService::class)
+                // string, numeric and boolean arguments can be passed "as is"
+                ->arg(0, 'Foo')
+                ->arg(1, true)
+                ->arg(2, 7)
+                ->arg(3, 3.14)
+
+                // constants: built-in, user-defined, or Enums
+                ->arg(4, E_ALL)
+                ->arg(5, \PDO::FETCH_NUM)
+                ->arg(6, Symfony\Component\HttpKernel\Kernel::VERSION)
+                ->arg(7, App\Config\SomeEnum::SomeCase)
+
+                // when not using autowiring, you can pass service arguments explicitly
+                ->arg(8, service('some-service-id')) # fails if service doesn't exist
+                # passes null if service doesn't exist
+                ->arg(9, new Reference('some-service-id', Reference::IGNORE_ON_INVALID_REFERENCE))
+
+                // collection with mixed argument types
+                ->arg(10, [
+                    'first' => true,
+                    'second' => 'Foo',
+                ]);
+
+            // ...
+        };
+
 Handling Multiple Services
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 

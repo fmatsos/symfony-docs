@@ -101,7 +101,8 @@ Active Core Members
   * **Berislav Balogović** (`hypemc`_);
   * **Mathias Arlaud** (`mtarld`_);
   * **Florent Morselli** (`spomky`_);
-  * **Alexandre Daubois** (`alexandre-daubois`_).
+  * **Alexandre Daubois** (`alexandre-daubois`_);
+  * **Christopher Hertel** (`chr-hertel`_).
 
 * **Security Team** (``@symfony/security`` on GitHub):
 
@@ -378,4 +379,5 @@ discretion of the **Project Leader**.
 .. _`spomky`: https://github.com/spomky/
 .. _`alexandre-daubois`: https://github.com/alexandre-daubois/
 .. _`tucksaun`: https://github.com/tucksaun/
+.. _`chr-hertel`: https://github.com/chr-hertel/
 .. _`the releases page`: https://symfony.com/releases

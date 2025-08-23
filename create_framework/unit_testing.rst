@@ -14,7 +14,7 @@ using `PHPUnit`_. At first, install PHPUnit as a development dependency:
 
     $ composer require --dev phpunit/phpunit:^11.0
 
-Then, create a PHPUnit configuration file in ``example.com/phpunit.xml.dist``:
+Then, create a PHPUnit configuration file in ``example.com/phpunit.dist.xml``:
 
 .. code-block:: xml
 

@@ -646,7 +646,7 @@ Then, inject and use as normal::
     use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
     use Symfony\Component\HttpFoundation\Request;
     use Symfony\Component\HttpFoundation\Response;
-    use Symfony\Component\RateLimiter\RateLimiterFactory;
+    use Symfony\Component\RateLimiter\RateLimiterFactoryInterface;
 
     class ContactController extends AbstractController
     {

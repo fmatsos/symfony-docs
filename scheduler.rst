@@ -276,6 +276,16 @@ defined by PHP datetime functions::
     RecurringMessage::every('3 weeks', new Message());
     RecurringMessage::every('first Monday of next month', new Message());
 
+.. note::
+
+    Comma-separated weekdays (e.g., ``'Monday, Thursday, Saturday'``) are not supported
+    by the ``every()`` method. For multiple weekdays, use cron expressions instead:
+
+    .. code-block:: diff
+
+        - RecurringMessage::every('Monday, Thursday, Saturday', new Message());
+        + RecurringMessage::cron('5 12 * * 1,4,6', new Message());
+
 .. tip::
 
     You can also define periodic tasks using :ref:`the AsPeriodicTask attribute <scheduler-attributes-periodic-task>`.

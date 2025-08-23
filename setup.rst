@@ -4,7 +4,7 @@ Installing & Setting up the Symfony Framework
 .. admonition:: Screencast
     :class: screencast
 
-    Do you prefer video tutorials? Check out the `Harmonious Development with Symfony`_
+    Do you prefer video tutorials? Check out the `Cosmic Coding with Symfony`_
     screencast series.
 
 .. _symfony-tech-requirements:
@@ -48,10 +48,10 @@ application:
 .. code-block:: terminal
 
     # run this if you are building a traditional web application
-    $ symfony new my_project_directory --version="7.3.x-dev" --webapp
+    $ symfony new my_project_directory --version="7.3.x" --webapp
 
     # run this if you are building a microservice, console application or API
-    $ symfony new my_project_directory --version="7.3.x-dev"
+    $ symfony new my_project_directory --version="7.3.x"
 
 The only difference between these two commands is the number of packages
 installed by default. The ``--webapp`` option installs extra packages to give
@@ -63,12 +63,12 @@ Symfony application using Composer:
 .. code-block:: terminal
 
     # run this if you are building a traditional web application
-    $ composer create-project symfony/skeleton:"7.3.x-dev" my_project_directory
+    $ composer create-project symfony/skeleton:"7.3.x" my_project_directory
     $ cd my_project_directory
     $ composer require webapp
 
     # run this if you are building a microservice, console application or API
-    $ composer create-project symfony/skeleton:"7.3.x-dev" my_project_directory
+    $ composer create-project symfony/skeleton:"7.3.x" my_project_directory
 
 No matter which command you run to create the Symfony application. All of them
 will create a new ``my_project_directory/`` directory, download some dependencies
@@ -103,7 +103,7 @@ Git, setup your project with the following commands:
 
 You'll probably also need to customize your :ref:`.env file <config-dot-env>`
 and do a few other project-specific tasks (e.g. creating a database). When
-working on a existing Symfony application for the first time, it may be useful
+working on an existing Symfony application for the first time, it may be useful
 to run this command which displays information about the project:
 
 .. code-block:: terminal
@@ -311,7 +311,7 @@ Learn More
     setup/web_server_configuration
     setup/*
 
-.. _`Harmonious Development with Symfony`: https://symfonycasts.com/screencast/symfony
+.. _`Cosmic Coding with Symfony`: https://symfonycasts.com/screencast/symfony
 .. _`Install Composer`: https://getcomposer.org/download/
 .. _`install the Symfony CLI`: https://symfony.com/download
 .. _`symfony-cli/symfony-cli GitHub repository`: https://github.com/symfony-cli/symfony-cli

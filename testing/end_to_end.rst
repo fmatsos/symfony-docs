@@ -76,12 +76,16 @@ When using the extension in conjunction with the ``PANTHER_ERROR_SCREENSHOT_DIR`
 environment variable, tests using the Panther client that fail or error (after the
 client is created) will automatically get a screenshot taken to help debugging.
 
-To register the Panther extension, add the following lines to ``phpunit.xml.dist``:
+To register the Panther extension, add the following lines to ``phpunit.dist.xml``
+(in legacy PHPUnit versions older than 10, the file is named ``phpunit.xml.dist``):
 
 .. code-block:: xml
 
-    <!-- phpunit.xml.dist -->
+    <!-- phpunit.dist.xml -->
     <extensions>
+        <!-- use this with PHPUnit 10 or newer -->
+        <bootstrap class="Symfony\Component\Panther\ServerExtension"/>
+        <!-- use this with legacy PHPUnit versions older than 10 -->
         <extension class="Symfony\Component\Panther\ServerExtension"/>
     </extensions>
 
@@ -868,12 +872,12 @@ Another option is to create a file called ``tests/router.php`` and add the follo
 
     require $script;
 
-Then declare it as a router for Panther server in ``phpunit.xml.dist`` using the
+Then declare it as a router for Panther server in ``phpunit.dist.xml`` using the
 ``PANTHER_WEB_SERVER_ROUTER`` environment variable:
 
 .. code-block:: xml
 
-    <!-- phpunit.xml.dist -->
+    <!-- phpunit.dist.xml -->
     <phpunit>
         <!-- ... -->
         <php>

@@ -180,9 +180,9 @@ party provider:
 +------------------------+---------------------------------------------------------+
 | Provider               | Formats                                                 |
 +========================+=========================================================+
-| `AhaSend`_             | - API ``ahasend+api://KEY@default``                     |
+| `AhaSend`_             | - SMTP ``ahasend+smtp://USERNAME:PASSWORD@default``     |
 |                        | - HTTP n/a                                              |
-|                        | - SMTP ``ahasend+smtp://USERNAME:PASSWORD@default``     |
+|                        | - API ``ahasend+api://KEY@default``                     |
 +------------------------+---------------------------------------------------------+
 | `Amazon SES`_          | - SMTP ``ses+smtp://USERNAME:PASSWORD@default``         |
 |                        | - HTTP ``ses+https://ACCESS_KEY:SECRET_KEY@default``    |
